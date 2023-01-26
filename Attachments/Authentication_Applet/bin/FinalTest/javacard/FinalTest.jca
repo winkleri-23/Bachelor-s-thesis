@@ -1,0 +1,706 @@
+// converted by version 1.3
+// on Sun Dec 12 00:08:40 CET 2021
+
+.package FinalTest {
+	.aid 0x1:0x2:0x3:0x4:0x5;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.2;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.2;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.2;		//javacard/security
+		0xA0:0x0:0x0:0x1:0x51:0x0 1.0;		//org/globalplatform
+	}
+
+	.applet {
+		0x1:0x2:0x3:0x4:0x5:0x0 FinalTest;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] FinalTest/TransientArray;
+		// 1
+		instanceFieldRef 0.9 FinalTest/pin;
+		// 2
+		instanceFieldRef byte[] FinalTest/PIN;
+		// 3
+		instanceFieldRef byte[] FinalTest/USERPIN;
+		// 4
+		instanceFieldRef byte[] FinalTest/RSA_KEY_MODULUS_NEW;
+		// 5
+		instanceFieldRef byte[] FinalTest/RSA_PUBLIC_KEY_EXPONENT_NEW;
+		// 6
+		instanceFieldRef byte[] FinalTest/outbuffer;
+		// 7
+		instanceFieldRef byte[] FinalTest/BigDatabaseKey;
+		// 8
+		instanceFieldRef 1.1 FinalTest/cipherENC;
+		// 9
+		instanceFieldRef 1.1 FinalTest/cipherDEC;
+		// 10
+		instanceFieldRef 2.9 FinalTest/rsaPublicKey;
+		// 11
+		instanceFieldRef boolean FinalTest/initialized;
+		// 12
+		instanceFieldRef short FinalTest/counter;
+		// 13
+		staticMethodRef 1.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	1.1;
+
+		// 14
+		staticMethodRef FinalTest/<init>([BSB)V;
+		// 15
+		classRef 0.9;		// javacard/framework/OwnerPIN
+		// 16
+		staticMethodRef 2.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	2.0;
+
+		// 17
+		classRef 2.9;		// javacard/security/RSAPublicKey
+		// 18
+		staticMethodRef 0.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 19
+		classRef FinalTest;
+		// 20
+		virtualMethodRef 0.9.8([BSB)V;		// javacard/framework/OwnerPIN.update([BSB)V
+		// 21
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 22
+		virtualMethodRef 0.3.1()V;		// javacard/framework/Applet.register()V
+		// 23
+		virtualMethodRef 0.9.2()B;		// javacard/framework/OwnerPIN.getTriesRemaining()B
+		// 24
+		virtualMethodRef 0.9.5()V;		// javacard/framework/OwnerPIN.reset()V
+		// 25
+		virtualMethodRef 0.3.3()Z;		// javacard/framework/Applet.selectingApplet()Z
+		// 26
+		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 27
+		staticMethodRef 3.3.4()Lorg/globalplatform/SecureChannel;;		// org/globalplatform/GPSystem.getSecureChannel()Lorg/globalplatform/SecureChannel;
+			.descriptor	Lorg/globalplatform/SecureChannel;	3.2;
+
+		// 28
+		virtualMethodRef 0.10.1()[B;		// javacard/framework/APDU.getBuffer()[B
+		// 29
+		virtualMethodRef 0.10.6()S;		// javacard/framework/APDU.setIncomingAndReceive()S
+		// 30
+		classRef 3.2;		// org/globalplatform/SecureChannel
+		// 31
+		virtualMethodRef 0.10.8(SS)V;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
+		// 32
+		virtualMethodRef 0.9.4()Z;		// javacard/framework/OwnerPIN.isValidated()Z
+		// 33
+		staticMethodRef 2.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	2.14;
+
+		// 34
+		virtualMethodRef 2.14.1([BSS)V;		// javacard/security/RandomData.generateData([BSS)V
+		// 35
+		staticMethodRef 0.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 36
+		virtualMethodRef 1.1.3(Ljavacard/security/Key;B)V;		// javacardx/crypto/Cipher.init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	2.0;
+
+		// 37
+		virtualMethodRef 1.1.1([BSS[BS)S;		// javacardx/crypto/Cipher.doFinal([BSS[BS)S
+		// 38
+		virtualMethodRef 0.10.7()S;		// javacard/framework/APDU.setOutgoing()S
+		// 39
+		virtualMethodRef 0.10.9(S)V;		// javacard/framework/APDU.setOutgoingLength(S)V
+		// 40
+		virtualMethodRef 0.10.5([BSS)V;		// javacard/framework/APDU.sendBytesLong([BSS)V
+		// 41
+		virtualMethodRef 0.9.1([BSB)Z;		// javacard/framework/OwnerPIN.check([BSB)Z
+		// 42
+		staticMethodRef 0.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+	}
+
+	.class public FinalTest 0 extends 0.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			 byte[] TransientArray 0;		// [B
+			 0.9 pin 1;		// Ljavacard/framework/OwnerPIN;
+			final byte[] PIN 2;		// [B
+			 byte[] USERPIN 3;		// [B
+			 byte[] RSA_KEY_MODULUS_NEW 4;		// [B
+			 byte[] RSA_PUBLIC_KEY_EXPONENT_NEW 5;		// [B
+			 byte[] outbuffer 6;		// [B
+			 byte[] BigDatabaseKey 7;		// [B
+			 1.1 cipherENC 8;		// Ljavacardx/crypto/Cipher;
+			 1.1 cipherDEC 9;		// Ljavacardx/crypto/Cipher;
+			 2.9 rsaPublicKey 10;		// Ljavacard/security/RSAPublicKey;
+			 boolean initialized 11;		// Z
+			 short counter 12;		// S
+			static final byte INIT_UPDATE = 80;		// B
+			static final byte EXT_AUTHENTICATE = -126;		// B
+			static final byte STORE_DATA = -30;		// B
+			static final byte SEND_KEY = 17;		// B
+			static final byte PIN_CHECK = 32;		// B
+			static final byte SEND_ENCRYPTED_KEY = -103;		// B
+			static final byte RECEIVE_MODULUS_FIRST = 99;		// B
+			static final byte RECEIVE_MODULUS_SECOND = 100;		// B
+			static final byte RECEIVE_MODULUS_THIRD = 101;		// B
+			static final byte RECEIVE_MODULUS_FOURTH = 102;		// B
+			static final byte CHANGE_PIN = 1;		// B
+			static final byte RECEIVE_EXPONENT = 97;		// B
+			static final byte BUILD_PUBLIC_KEY = 98;		// B
+			static final byte RESET = 19;		// B
+			static final short SizeOfRSAKey = 2048;		// S
+			static final short SizeofDatabaseKey = 2048;		// S
+			static final short SizeOfAPDU = 128;		// S
+			static final short IncorrectPIN = 25345;		// S
+		}
+
+		.publicMethodTable 4 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 6;
+			.locals 0;
+
+				L0:	new 19;		// FinalTest/FinalTest
+					dup;
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokespecial 14;		// FinalTest/FinalTest.<init>([BSB)V
+					pop;
+					return;
+		}
+
+		.method protected <init>([BSB)V 1 {
+			.stack 5;
+			.locals 3;
+
+				L0:	aload_0;
+					invokespecial 21;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					aconst_null;
+					putfield_a 0;		// reference FinalTest/FinalTest.TransientArray
+					aload_0;
+					new 15;		// javacard/framework/OwnerPIN
+					dup;
+					bspush 10;
+					sconst_4;
+					invokespecial 18;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putfield_a 1;		// reference FinalTest/FinalTest.pin
+					aload_0;
+					sconst_4;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 49;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 50;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 51;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 52;
+					bastore;
+					putfield_a 2;		// reference FinalTest/FinalTest.PIN
+					aload_0;
+					sconst_4;
+					newarray 11;
+					putfield_a 3;		// reference FinalTest/FinalTest.USERPIN
+					aload_0;
+					sspush 256;
+					newarray 11;
+					putfield_a 4;		// reference FinalTest/FinalTest.RSA_KEY_MODULUS_NEW
+					aload_0;
+					sconst_3;
+					newarray 11;
+					putfield_a 5;		// reference FinalTest/FinalTest.RSA_PUBLIC_KEY_EXPONENT_NEW
+					aload_0;
+					sspush 256;
+					newarray 11;
+					putfield_a 6;		// reference FinalTest/FinalTest.outbuffer
+					aload_0;
+					sspush 2048;
+					newarray 11;
+					putfield_a 7;		// reference FinalTest/FinalTest.BigDatabaseKey
+					aload_0;
+					bspush 10;
+					sconst_0;
+					invokestatic 13;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 8;		// reference FinalTest/FinalTest.cipherENC
+					aload_0;
+					bspush 10;
+					sconst_0;
+					invokestatic 13;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 9;		// reference FinalTest/FinalTest.cipherDEC
+					aload_0;
+					sconst_4;
+					sspush 2048;
+					sconst_0;
+					invokestatic 16;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 17;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putfield_a 10;		// reference FinalTest/FinalTest.rsaPublicKey
+					aload_0;
+					sconst_0;
+					putfield_b 11;		// boolean FinalTest/FinalTest.initialized
+					aload_1;
+					sload_2;
+					baload;
+					sstore 4;
+				L1:	sload_2;
+					sload 4;
+					sadd;
+					sconst_1;
+					sadd;
+					sstore_2;
+					aload_1;
+					sload_2;
+					baload;
+					sstore 5;
+				L2:	sload_2;
+					sload 5;
+					sadd;
+					sconst_1;
+					sadd;
+					sstore_2;
+					aload_1;
+					sload_2;
+					baload;
+					sstore 6;
+				L3:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					getfield_a_this 2;		// reference FinalTest/FinalTest.PIN
+					sconst_0;
+					sconst_4;
+					invokevirtual 20;		// javacard/framework/OwnerPIN.update([BSB)V
+					aload_0;
+					sconst_0;
+					putfield_s 12;		// short FinalTest/FinalTest.counter
+					aload_0;
+					invokevirtual 22;		// javacard/framework/Applet.register()V
+					return;
+		}
+
+		.method public select()Z 6 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 23;		// javacard/framework/OwnerPIN.getTriesRemaining()B
+					ifne L2;
+				L1:	sconst_0;
+					sreturn;
+				L2:	sconst_1;
+					sreturn;
+		}
+
+		.method public deselect()V 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 24;		// javacard/framework/OwnerPIN.reset()V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 6;
+			.locals 9;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					invokevirtual 25;		// javacard/framework/Applet.selectingApplet()Z
+					ifeq L2;
+				L1:	sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					return;
+				L2:	invokestatic 27;		// org/globalplatform/GPSystem.getSecureChannel()Lorg/globalplatform/SecureChannel;
+					astore_2;
+				L3:	aload_1;
+					invokevirtual 28;		// javacard/framework/APDU.getBuffer()[B
+					astore 5;
+				L4:	aload 5;
+					sconst_1;
+					baload;
+					slookupswitch L53 13 -126 L5 -30 L8 1 L48 17 L9 19 L20 32 L23 80 L5 97 L42 98 L45 99 L29 100 L33 101 L36 102 L39;
+				L5:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore_3;
+				L6:	aload_2;
+					aload_1;
+					invokeinterface 2 30 0;		// org/globalplatform/SecureChannel
+					sstore 4;
+				L7:	aload_1;
+					sconst_5;
+					sload 4;
+					invokevirtual 31;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
+					goto_w L54;
+				L8:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore_3;
+					aload_2;
+					aload 5;
+					sconst_0;
+					sload_3;
+					invokeinterface 4 30 2;		// org/globalplatform/SecureChannel
+					sstore_3;
+					aload_1;
+					sconst_0;
+					sload_3;
+					invokevirtual 31;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
+					goto_w L54;
+				L9:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L11;
+				L10:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L11:	getfield_b_this 11;		// boolean FinalTest/FinalTest.initialized
+					ifne L14;
+				L12:	sconst_2;
+					invokestatic 33;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					astore 6;
+				L13:	aload 6;
+					getfield_a_this 7;		// reference FinalTest/FinalTest.BigDatabaseKey
+					sconst_0;
+					sspush 1024;
+					invokevirtual 34;		// javacard/security/RandomData.generateData([BSS)V
+					aload 6;
+					getfield_a_this 7;		// reference FinalTest/FinalTest.BigDatabaseKey
+					sspush 1024;
+					sspush 1024;
+					invokevirtual 34;		// javacard/security/RandomData.generateData([BSS)V
+					aload_0;
+					sconst_1;
+					putfield_b 11;		// boolean FinalTest/FinalTest.initialized
+				L14:	getfield_a_this 6;		// reference FinalTest/FinalTest.outbuffer
+					sconst_0;
+					getfield_a_this 6;		// reference FinalTest/FinalTest.outbuffer
+					arraylength;
+					sconst_0;
+					invokestatic 35;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore 6;
+				L15:	getfield_a_this 8;		// reference FinalTest/FinalTest.cipherENC
+					getfield_a_this 10;		// reference FinalTest/FinalTest.rsaPublicKey
+					sconst_2;
+					invokevirtual 36;		// javacardx/crypto/Cipher.init(Ljavacard/security/Key;B)V
+					getfield_a_this 8;		// reference FinalTest/FinalTest.cipherENC
+					getfield_a_this 7;		// reference FinalTest/FinalTest.BigDatabaseKey
+					sspush 128;
+					getfield_s_this 12;		// short FinalTest/FinalTest.counter
+					smul;
+					sspush 128;
+					getfield_a_this 6;		// reference FinalTest/FinalTest.outbuffer
+					sconst_0;
+					invokevirtual 37;		// javacardx/crypto/Cipher.doFinal([BSS[BS)S
+					sstore 7;
+				L16:	aload_0;
+					dup;
+					getfield_s 12;		// short FinalTest/FinalTest.counter
+					sconst_1;
+					sadd;
+					putfield_s 12;		// short FinalTest/FinalTest.counter
+					getfield_s_this 12;		// short FinalTest/FinalTest.counter
+					bspush 16;
+					if_scmpne L18;
+				L17:	aload_0;
+					sconst_0;
+					putfield_s 12;		// short FinalTest/FinalTest.counter
+				L18:	aload_1;
+					invokevirtual 38;		// javacard/framework/APDU.setOutgoing()S
+					sstore 8;
+				L19:	aload_1;
+					getfield_a_this 6;		// reference FinalTest/FinalTest.outbuffer
+					arraylength;
+					invokevirtual 39;		// javacard/framework/APDU.setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 6;		// reference FinalTest/FinalTest.outbuffer
+					sconst_0;
+					getfield_a_this 6;		// reference FinalTest/FinalTest.outbuffer
+					arraylength;
+					invokevirtual 40;		// javacard/framework/APDU.sendBytesLong([BSS)V
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L20:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L22;
+				L21:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L22:	aload_0;
+					sconst_0;
+					putfield_b 11;		// boolean FinalTest/FinalTest.initialized
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L23:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore 9;
+				L24:	aload_2;
+					aload 5;
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_5;
+					sadd;
+					invokeinterface 4 30 2;		// org/globalplatform/SecureChannel
+					sstore 9;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_4;
+					if_scmpeq L26;
+				L25:	sspush 26368;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+				L26:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					aload 5;
+					sconst_5;
+					sconst_4;
+					invokevirtual 41;		// javacard/framework/OwnerPIN.check([BSB)Z
+					ifeq L28;
+				L27:	sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L28:	sspush 27013;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L29:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L31;
+				L30:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L31:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore 10;
+				L32:	aload_2;
+					aload 5;
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_5;
+					sadd;
+					invokeinterface 4 30 2;		// org/globalplatform/SecureChannel
+					sstore 10;
+					aload 5;
+					sconst_5;
+					getfield_a_this 4;		// reference FinalTest/FinalTest.RSA_KEY_MODULUS_NEW
+					sconst_0;
+					bspush 64;
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L33:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L35;
+				L34:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L35:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore 10;
+					aload_2;
+					aload 5;
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_5;
+					sadd;
+					invokeinterface 4 30 2;		// org/globalplatform/SecureChannel
+					sstore 10;
+					aload 5;
+					sconst_5;
+					getfield_a_this 4;		// reference FinalTest/FinalTest.RSA_KEY_MODULUS_NEW
+					bspush 64;
+					bspush 64;
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L36:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L38;
+				L37:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L38:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore 10;
+					aload_2;
+					aload 5;
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_5;
+					sadd;
+					invokeinterface 4 30 2;		// org/globalplatform/SecureChannel
+					sstore 10;
+					aload 5;
+					sconst_5;
+					getfield_a_this 4;		// reference FinalTest/FinalTest.RSA_KEY_MODULUS_NEW
+					sspush 128;
+					bspush 64;
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L39:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L41;
+				L40:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L41:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore 10;
+					aload_2;
+					aload 5;
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_5;
+					sadd;
+					invokeinterface 4 30 2;		// org/globalplatform/SecureChannel
+					sstore 10;
+					aload 5;
+					sconst_5;
+					getfield_a_this 4;		// reference FinalTest/FinalTest.RSA_KEY_MODULUS_NEW
+					sspush 192;
+					bspush 64;
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L42:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L44;
+				L43:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L44:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore 10;
+					aload_2;
+					aload 5;
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_5;
+					sadd;
+					invokeinterface 4 30 2;		// org/globalplatform/SecureChannel
+					sstore 10;
+					aload 5;
+					sconst_5;
+					getfield_a_this 5;		// reference FinalTest/FinalTest.RSA_PUBLIC_KEY_EXPONENT_NEW
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L45:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L47;
+				L46:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L54;
+				L47:	getfield_a_this 10;		// reference FinalTest/FinalTest.rsaPublicKey
+					getfield_a_this 5;		// reference FinalTest/FinalTest.RSA_PUBLIC_KEY_EXPONENT_NEW
+					sconst_0;
+					getfield_a_this 5;		// reference FinalTest/FinalTest.RSA_PUBLIC_KEY_EXPONENT_NEW
+					arraylength;
+					invokeinterface 4 17 6;		// javacard/security/RSAPublicKey
+					getfield_a_this 10;		// reference FinalTest/FinalTest.rsaPublicKey
+					getfield_a_this 4;		// reference FinalTest/FinalTest.RSA_KEY_MODULUS_NEW
+					sconst_0;
+					getfield_a_this 4;		// reference FinalTest/FinalTest.RSA_KEY_MODULUS_NEW
+					arraylength;
+					invokeinterface 4 17 7;		// javacard/security/RSAPublicKey
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto L54;
+				L48:	getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					invokevirtual 32;		// javacard/framework/OwnerPIN.isValidated()Z
+					ifne L50;
+				L49:	sspush 25345;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto L54;
+				L50:	aload_1;
+					invokevirtual 29;		// javacard/framework/APDU.setIncomingAndReceive()S
+					sstore 10;
+					aload_2;
+					aload 5;
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_5;
+					sadd;
+					invokeinterface 4 30 2;		// org/globalplatform/SecureChannel
+					sstore 10;
+					aload 5;
+					sconst_4;
+					baload;
+					sconst_4;
+					if_scmpeq L52;
+				L51:	sspush 26368;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+				L52:	aload 5;
+					sconst_5;
+					getfield_a_this 3;		// reference FinalTest/FinalTest.USERPIN
+					sconst_0;
+					aload 5;
+					sconst_4;
+					baload;
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 1;		// reference FinalTest/FinalTest.pin
+					getfield_a_this 3;		// reference FinalTest/FinalTest.USERPIN
+					sconst_0;
+					sconst_4;
+					invokevirtual 20;		// javacard/framework/OwnerPIN.update([BSB)V
+					sspush -28672;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+					goto L54;
+				L53:	sspush 27904;
+					invokestatic 26;		// javacard/framework/ISOException.throwIt(S)V
+				L54:	return;
+		}
+
+	}
+
+}

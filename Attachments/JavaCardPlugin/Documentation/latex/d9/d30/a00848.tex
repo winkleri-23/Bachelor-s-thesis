@@ -1,0 +1,423 @@
+\doxysection{Simple\+Plugin.\+Java\+Card Class Reference}
+\label{a00848}\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+
+
+This class provides secure communication with Java card.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ Unlock\+Card} ()
+\begin{DoxyCompactList}\small\item\em This function gets pin from the user and send it to Java Card. \end{DoxyCompactList}\item 
+bool \textbf{ Establish\+Secure\+Channel} ()
+\begin{DoxyCompactList}\small\item\em Function establishes secure channel between the card and plugin \end{DoxyCompactList}\item 
+byte[$\,$] \textbf{ Get\+RSAKey} ()
+\begin{DoxyCompactList}\small\item\em Function sends all information needed for building the public RSA key in the Java Card and receive database key afterwards. \end{DoxyCompactList}\item 
+bool \textbf{ Select\+Applet} ()
+\begin{DoxyCompactList}\small\item\em Select the correct applet on Java Card \end{DoxyCompactList}\item 
+bool \textbf{ Change\+Pin} ()
+\begin{DoxyCompactList}\small\item\em Gives the user an option to change the Java Card pin. \end{DoxyCompactList}\item 
+\textbf{ Java\+Card} ()
+\begin{DoxyCompactList}\small\item\em Constructor of the class -\/ creating Scard context \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ reader}
+\begin{DoxyCompactList}\small\item\em Indicates if the reader is connected to the PC \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ Check\+Response} (Response response)
+\begin{DoxyCompactList}\small\item\em Check the APDU response code \end{DoxyCompactList}\item 
+bool \textbf{ Send\+Modulus} (Iso\+Reader iso\+Reader, ref Response response, ref Command\+Apdu apdu)
+\begin{DoxyCompactList}\small\item\em Send RSA modulus for building RSA public key in the Java Card itself. \end{DoxyCompactList}\item 
+bool \textbf{ Send\+Exponent} (Iso\+Reader iso\+Reader, ref Response response, ref Command\+Apdu apdu)
+\begin{DoxyCompactList}\small\item\em Send RSA key exponent for building RSA public key in the Java Card itself. \end{DoxyCompactList}\item 
+bool \textbf{ Build\+Key\+Command} (Iso\+Reader iso\+Reader, ref Response response, ref Command\+Apdu apdu)
+\begin{DoxyCompactList}\small\item\em Send APDU which make the card to build the public key. \end{DoxyCompactList}\item 
+byte[$\,$] \textbf{ Receive\+The\+Key} (Iso\+Reader iso\+Reader, ref Response response, ref Command\+Apdu apdu)
+\begin{DoxyCompactList}\small\item\em Receiving Database key from Java Card. The key is recieved by 128 bit blocks. \end{DoxyCompactList}\item 
+byte[$\,$] \textbf{ Decrypt} (byte[$\,$] Data)
+\begin{DoxyCompactList}\small\item\em Decrypt given array using private key \end{DoxyCompactList}\item 
+void \textbf{ RSACipher} ()
+\begin{DoxyCompactList}\small\item\em Export RSA parameters \end{DoxyCompactList}\item 
+void \textbf{ Wrap\+Command} (Iso\+Reader iso\+Reader, ref Command\+Apdu apdu)
+\begin{DoxyCompactList}\small\item\em Wrap APDU -\/ encrypt the data in order the send it using secure channel \end{DoxyCompactList}\item 
+\textbf{ $\sim$\+Java\+Card} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \textbf{ Choose\+Reader} (string[$\,$] reader\+Names)
+\begin{DoxyCompactList}\small\item\em Let the user choose which one of available card readers will be used \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SCard\+Context \textbf{ context1}
+\begin{DoxyCompactList}\small\item\em Card context \end{DoxyCompactList}\item 
+string \textbf{ reader\+Name}
+\begin{DoxyCompactList}\small\item\em Name of the currently using card reader \end{DoxyCompactList}\item 
+Key\+Set \textbf{ sc\+Keys}
+\begin{DoxyCompactList}\small\item\em Key set of session keys -\/ used for establishing the secure channel \end{DoxyCompactList}\item 
+RSAParameters \textbf{ \+\_\+private\+Key}
+\begin{DoxyCompactList}\small\item\em RSA private key \end{DoxyCompactList}\item 
+RSAParameters \textbf{ \+\_\+public\+Key}
+\begin{DoxyCompactList}\small\item\em RSA Public key \end{DoxyCompactList}\item 
+Global\+Platform \textbf{ gp}
+\begin{DoxyCompactList}\small\item\em Global platform implementation -\/ provides communication via Secure channel \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static RSACrypto\+Service\+Provider \textbf{ csp} = new RSACrypto\+Service\+Provider(Constants.\+Size\+Of\+RSAKey)
+\begin{DoxyCompactList}\small\item\em RSA cipher \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class provides secure communication with Java card. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{a00848_a98d0fb0ba7977d2c26e968b1edbf612f}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!JavaCard@{JavaCard}}
+\index{JavaCard@{JavaCard}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{JavaCard()}
+{\footnotesize\ttfamily Simple\+Plugin.\+Java\+Card.\+Java\+Card (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor of the class -\/ creating Scard context 
+
+\mbox{\label{a00848_af2b3ff060065231709f5bfc7a0933465}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!````~JavaCard@{$\sim$JavaCard}}
+\index{````~JavaCard@{$\sim$JavaCard}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{$\sim$JavaCard()}
+{\footnotesize\ttfamily Simple\+Plugin.\+Java\+Card.$\sim$\+Java\+Card (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{a00848_a6c37282817f54998b1b0a2ffa2ef95fb}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!BuildKeyCommand@{BuildKeyCommand}}
+\index{BuildKeyCommand@{BuildKeyCommand}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{BuildKeyCommand()}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+Build\+Key\+Command (\begin{DoxyParamCaption}\item[{Iso\+Reader}]{iso\+Reader,  }\item[{ref Response}]{response,  }\item[{ref Command\+Apdu}]{apdu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Send APDU which make the card to build the public key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iso\+Reader} & Iso reader\\
+\hline
+{\em response} & APDU response\\
+\hline
+{\em apdu} & APDU used to send the RSA key modulus\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the RSA key is sucessfully built 
+\end{DoxyReturn}
+\mbox{\label{a00848_abbb297b87174e532571a75a54f51f196}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!ChangePin@{ChangePin}}
+\index{ChangePin@{ChangePin}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{ChangePin()}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+Change\+Pin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gives the user an option to change the Java Card pin. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the pin was changed
+\end{DoxyReturn}
+\mbox{\label{a00848_a676ce48c413d2e24cf189809216b8bb2}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!CheckResponse@{CheckResponse}}
+\index{CheckResponse@{CheckResponse}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{CheckResponse()}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+Check\+Response (\begin{DoxyParamCaption}\item[{Response}]{response }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Check the APDU response code 
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & APDU response\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if correct -\/ return true, else return false
+\end{DoxyReturn}
+\mbox{\label{a00848_a3172c99aca8aad5b33df52ca82d55956}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!ChooseReader@{ChooseReader}}
+\index{ChooseReader@{ChooseReader}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{ChooseReader()}
+{\footnotesize\ttfamily static string Simple\+Plugin.\+Java\+Card.\+Choose\+Reader (\begin{DoxyParamCaption}\item[{string[$\,$]}]{reader\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Let the user choose which one of available card readers will be used 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reader\+Names} & Array of available readers\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name of the chosen card reader
+\end{DoxyReturn}
+\mbox{\label{a00848_adc4e9f27d79becfcede24a6c49a92ce8}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!Decrypt@{Decrypt}}
+\index{Decrypt@{Decrypt}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{Decrypt()}
+{\footnotesize\ttfamily byte[$\,$] Simple\+Plugin.\+Java\+Card.\+Decrypt (\begin{DoxyParamCaption}\item[{byte[$\,$]}]{Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Decrypt given array using private key 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Data} & Array to be decrypted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns decrypted data 
+\end{DoxyReturn}
+\mbox{\label{a00848_a0ed57e1c598d7daa3f8da1200551ad4e}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!EstablishSecureChannel@{EstablishSecureChannel}}
+\index{EstablishSecureChannel@{EstablishSecureChannel}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{EstablishSecureChannel()}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+Establish\+Secure\+Channel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function establishes secure channel between the card and plugin 
+
+\begin{DoxyReturn}{Returns}
+Return true if the channel is established sucessfully 
+\end{DoxyReturn}
+\mbox{\label{a00848_a70b5f55471c46db3b575a4aa8e0604d9}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!GetRSAKey@{GetRSAKey}}
+\index{GetRSAKey@{GetRSAKey}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{GetRSAKey()}
+{\footnotesize\ttfamily byte[$\,$] Simple\+Plugin.\+Java\+Card.\+Get\+RSAKey (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function sends all information needed for building the public RSA key in the Java Card and receive database key afterwards. 
+
+\begin{DoxyReturn}{Returns}
+Returns database key stored in byte array
+\end{DoxyReturn}
+\mbox{\label{a00848_a85871d26d7a20958af37725c760aa854}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!ReceiveTheKey@{ReceiveTheKey}}
+\index{ReceiveTheKey@{ReceiveTheKey}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{ReceiveTheKey()}
+{\footnotesize\ttfamily byte[$\,$] Simple\+Plugin.\+Java\+Card.\+Receive\+The\+Key (\begin{DoxyParamCaption}\item[{Iso\+Reader}]{iso\+Reader,  }\item[{ref Response}]{response,  }\item[{ref Command\+Apdu}]{apdu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Receiving Database key from Java Card. The key is recieved by 128 bit blocks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iso\+Reader} & Iso reader\\
+\hline
+{\em response} & APDU response\\
+\hline
+{\em apdu} & APDU used to send the RSA key modulus\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns decrepted database key stored in byte array 
+\end{DoxyReturn}
+\mbox{\label{a00848_a9171208ddf1820baea70030c6b3379f9}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!RSACipher@{RSACipher}}
+\index{RSACipher@{RSACipher}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{RSACipher()}
+{\footnotesize\ttfamily void Simple\+Plugin.\+Java\+Card.\+RSACipher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Export RSA parameters 
+
+\mbox{\label{a00848_a528c79534e366bacd27dd099e967dbf8}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!SelectApplet@{SelectApplet}}
+\index{SelectApplet@{SelectApplet}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{SelectApplet()}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+Select\+Applet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Select the correct applet on Java Card 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the applet was selected 
+\end{DoxyReturn}
+\mbox{\label{a00848_a851058a3078a7b1ba234b154bdd9fbae}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!SendExponent@{SendExponent}}
+\index{SendExponent@{SendExponent}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{SendExponent()}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+Send\+Exponent (\begin{DoxyParamCaption}\item[{Iso\+Reader}]{iso\+Reader,  }\item[{ref Response}]{response,  }\item[{ref Command\+Apdu}]{apdu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Send RSA key exponent for building RSA public key in the Java Card itself. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iso\+Reader} & Iso reader\\
+\hline
+{\em response} & APDU response\\
+\hline
+{\em apdu} & APDU used to send the RSA key modulus\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the RSA key exponent was sucessfully received
+\end{DoxyReturn}
+\mbox{\label{a00848_a6ec9d31c44d96dc6ff5dcd1f81af2a82}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!SendModulus@{SendModulus}}
+\index{SendModulus@{SendModulus}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{SendModulus()}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+Send\+Modulus (\begin{DoxyParamCaption}\item[{Iso\+Reader}]{iso\+Reader,  }\item[{ref Response}]{response,  }\item[{ref Command\+Apdu}]{apdu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Send RSA modulus for building RSA public key in the Java Card itself. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iso\+Reader} & Iso reader\\
+\hline
+{\em response} & APDU response\\
+\hline
+{\em apdu} & APDU used to send the RSA key modulus\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the modulus was sucessfully received
+\end{DoxyReturn}
+\mbox{\label{a00848_a1254cbd947f142bfaf96b3dd915529a0}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!UnlockCard@{UnlockCard}}
+\index{UnlockCard@{UnlockCard}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{UnlockCard()}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+Unlock\+Card (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function gets pin from the user and send it to Java Card. 
+
+\begin{DoxyReturn}{Returns}
+If the pin unlocks the card -\/ returns true 
+\end{DoxyReturn}
+\mbox{\label{a00848_ac038f495f40a5d7ff5a838b85059f508}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!WrapCommand@{WrapCommand}}
+\index{WrapCommand@{WrapCommand}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{WrapCommand()}
+{\footnotesize\ttfamily void Simple\+Plugin.\+Java\+Card.\+Wrap\+Command (\begin{DoxyParamCaption}\item[{Iso\+Reader}]{iso\+Reader,  }\item[{ref Command\+Apdu}]{apdu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Wrap APDU -\/ encrypt the data in order the send it using secure channel 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iso\+Reader} & Iso reader which is currently using by the user\\
+\hline
+{\em apdu} & Apdu to wrap\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns wrapped apdu 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{a00848_ae290281f02f06f1138763b6e7ea10833}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!\_privateKey@{\_privateKey}}
+\index{\_privateKey@{\_privateKey}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{\_privateKey}
+{\footnotesize\ttfamily RSAParameters Simple\+Plugin.\+Java\+Card.\+\_\+private\+Key\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+RSA private key 
+
+\mbox{\label{a00848_a604dce470c19d11f2a2551ef4f43974a}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!\_publicKey@{\_publicKey}}
+\index{\_publicKey@{\_publicKey}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{\_publicKey}
+{\footnotesize\ttfamily RSAParameters Simple\+Plugin.\+Java\+Card.\+\_\+public\+Key\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+RSA Public key 
+
+\mbox{\label{a00848_a1ea16092a99f220eddbb964f8d5f0948}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!context1@{context1}}
+\index{context1@{context1}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{context1}
+{\footnotesize\ttfamily SCard\+Context Simple\+Plugin.\+Java\+Card.\+context1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Card context 
+
+\mbox{\label{a00848_a1bf128a1b67b98d10b2934169593286c}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!csp@{csp}}
+\index{csp@{csp}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{csp}
+{\footnotesize\ttfamily RSACrypto\+Service\+Provider Simple\+Plugin.\+Java\+Card.\+csp = new RSACrypto\+Service\+Provider(Constants.\+Size\+Of\+RSAKey)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+RSA cipher 
+
+\mbox{\label{a00848_a0be5c0ea2179451dd06e775177361e34}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!gp@{gp}}
+\index{gp@{gp}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{gp}
+{\footnotesize\ttfamily Global\+Platform Simple\+Plugin.\+Java\+Card.\+gp\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Global platform implementation -\/ provides communication via Secure channel 
+
+\mbox{\label{a00848_ace16209af80acf31b9ed96a4aba31c6d}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!reader@{reader}}
+\index{reader@{reader}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{reader}
+{\footnotesize\ttfamily bool Simple\+Plugin.\+Java\+Card.\+reader}
+
+
+
+Indicates if the reader is connected to the PC 
+
+\mbox{\label{a00848_a21d46e64518cc0bc1b33a6d46aa36108}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!readerName@{readerName}}
+\index{readerName@{readerName}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{readerName}
+{\footnotesize\ttfamily string Simple\+Plugin.\+Java\+Card.\+reader\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Name of the currently using card reader 
+
+\mbox{\label{a00848_a4b066a328b379664bb35662cd2e0ae70}} 
+\index{SimplePlugin.JavaCard@{SimplePlugin.JavaCard}!scKeys@{scKeys}}
+\index{scKeys@{scKeys}!SimplePlugin.JavaCard@{SimplePlugin.JavaCard}}
+\doxysubsubsection{scKeys}
+{\footnotesize\ttfamily Key\+Set Simple\+Plugin.\+Java\+Card.\+sc\+Keys\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Key set of session keys -\/ used for establishing the secure channel 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Program Files (x86)/\+Kee\+Pass Password Safe 2/\+Plugins/\+Java\+Card\+Plugin/\+Java\+Card\+Plugin/\+Simple\+Plugin/\textbf{ Java\+Card.\+cs}\end{DoxyCompactItemize}

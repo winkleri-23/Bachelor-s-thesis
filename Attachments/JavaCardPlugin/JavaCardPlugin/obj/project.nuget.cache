@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "aZT2QXXfMu83jdEZHBlU1PQp+7cNZN5r0/zd1NSJjb4Qd5wN/xo/rPCm5zFXH9OuIsBccr2Yepfy7PgMtFhPWg==",
+  "success": true,
+  "projectFilePath": "C:\\Program Files (x86)\\KeePass Password Safe 2\\Plugins\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Erich\\.nuget\\packages\\identitymodel\\4.3.1\\identitymodel.4.3.1.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\ionic.zip\\1.9.1.8\\ionic.zip.1.9.1.8.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\lacuna.pki\\2.7.2\\lacuna.pki.2.7.2.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\lacuna.pki.braziltrustservices\\1.2.1\\lacuna.pki.braziltrustservices.1.2.1.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\pcsc\\5.0.0\\pcsc.5.0.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\pcsc.iso7816\\5.0.0\\pcsc.iso7816.5.0.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\sharpziplib\\1.3.3\\sharpziplib.1.3.3.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.security.cryptography.xml\\4.5.0\\system.security.cryptography.xml.4.5.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.security.permissions\\4.5.0\\system.security.permissions.4.5.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.security.principal.windows\\4.5.0\\system.security.principal.windows.4.5.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.text.encoding.codepages\\4.3.0\\system.text.encoding.codepages.4.3.0.nupkg.sha512",
+    "C:\\Users\\Erich\\.nuget\\packages\\system.text.encodings.web\\4.7.0\\system.text.encodings.web.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

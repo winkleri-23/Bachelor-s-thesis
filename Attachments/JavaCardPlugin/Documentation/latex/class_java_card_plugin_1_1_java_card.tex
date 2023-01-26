@@ -1,0 +1,120 @@
+\hypertarget{class_java_card_plugin_1_1_java_card}{}\doxysection{Java\+Card\+Plugin.\+Java\+Card Class Reference}
+\label{class_java_card_plugin_1_1_java_card}\index{JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}}
+
+
+This class provides secure communication with Java card.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_java_card_plugin_1_1_java_card_aae5cf1f064fa79f892c9cfbce053de17}{Unlock\+Card}} ()
+\begin{DoxyCompactList}\small\item\em This function gets pin from the user and send it to Java Card. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_java_card_plugin_1_1_java_card_a9a7259e691b1eb2d0bc689d4c77bda64}{Establish\+Secure\+Channel}} ()
+\begin{DoxyCompactList}\small\item\em Function establishes secure channel between the card and plugin \end{DoxyCompactList}\item 
+byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_java_card_plugin_1_1_java_card_ab9026e3e4ed90b694d37ede22fb2b319}{Get\+RSAKey}} ()
+\begin{DoxyCompactList}\small\item\em Function sends all information needed for building the public RSA key in the Java Card and receive database key afterwards. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_java_card_plugin_1_1_java_card_af3dcb9aac6418ec1f59cbf7bf20c3f2d}{Select\+Applet}} ()
+\begin{DoxyCompactList}\small\item\em Select the correct applet on Java Card \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_java_card_plugin_1_1_java_card_adbe07e0563605d5dedc5f9cad0a93a7e}{Change\+Pin}} ()
+\begin{DoxyCompactList}\small\item\em Gives the user an option to change the Java Card pin. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_java_card_plugin_1_1_java_card_a722e350366a339da3d3114092caa1e3b}{Invalidate\+Database\+Key}} ()
+\begin{DoxyCompactList}\small\item\em Send APDU reset command. -\/ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_java_card_plugin_1_1_java_card_ac4cb53cdd4c7aea50e494998b64c0ad0}\label{class_java_card_plugin_1_1_java_card_ac4cb53cdd4c7aea50e494998b64c0ad0}} 
+{\bfseries Java\+Card} ()
+\begin{DoxyCompactList}\small\item\em Constructor of the class -\/ creating Scard context \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_java_card_plugin_1_1_java_card_a4813f7e55f3d70ca4a06ccd3c16e410d}\label{class_java_card_plugin_1_1_java_card_a4813f7e55f3d70ca4a06ccd3c16e410d}} 
+bool {\bfseries reader}
+\begin{DoxyCompactList}\small\item\em Indicates if the reader is connected to the PC \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class provides secure communication with Java card. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_java_card_plugin_1_1_java_card_adbe07e0563605d5dedc5f9cad0a93a7e}\label{class_java_card_plugin_1_1_java_card_adbe07e0563605d5dedc5f9cad0a93a7e}} 
+\index{JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}!ChangePin@{ChangePin}}
+\index{ChangePin@{ChangePin}!JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}}
+\doxysubsubsection{\texorpdfstring{ChangePin()}{ChangePin()}}
+{\footnotesize\ttfamily bool Java\+Card\+Plugin.\+Java\+Card.\+Change\+Pin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gives the user an option to change the Java Card pin. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the pin was changed
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_java_card_plugin_1_1_java_card_a9a7259e691b1eb2d0bc689d4c77bda64}\label{class_java_card_plugin_1_1_java_card_a9a7259e691b1eb2d0bc689d4c77bda64}} 
+\index{JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}!EstablishSecureChannel@{EstablishSecureChannel}}
+\index{EstablishSecureChannel@{EstablishSecureChannel}!JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}}
+\doxysubsubsection{\texorpdfstring{EstablishSecureChannel()}{EstablishSecureChannel()}}
+{\footnotesize\ttfamily bool Java\+Card\+Plugin.\+Java\+Card.\+Establish\+Secure\+Channel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function establishes secure channel between the card and plugin 
+
+\begin{DoxyReturn}{Returns}
+Return true if the channel is established sucessfully 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_java_card_plugin_1_1_java_card_ab9026e3e4ed90b694d37ede22fb2b319}\label{class_java_card_plugin_1_1_java_card_ab9026e3e4ed90b694d37ede22fb2b319}} 
+\index{JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}!GetRSAKey@{GetRSAKey}}
+\index{GetRSAKey@{GetRSAKey}!JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}}
+\doxysubsubsection{\texorpdfstring{GetRSAKey()}{GetRSAKey()}}
+{\footnotesize\ttfamily byte\mbox{[}$\,$\mbox{]} Java\+Card\+Plugin.\+Java\+Card.\+Get\+RSAKey (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function sends all information needed for building the public RSA key in the Java Card and receive database key afterwards. 
+
+\begin{DoxyReturn}{Returns}
+Returns database key stored in byte array
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_java_card_plugin_1_1_java_card_a722e350366a339da3d3114092caa1e3b}\label{class_java_card_plugin_1_1_java_card_a722e350366a339da3d3114092caa1e3b}} 
+\index{JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}!InvalidateDatabaseKey@{InvalidateDatabaseKey}}
+\index{InvalidateDatabaseKey@{InvalidateDatabaseKey}!JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}}
+\doxysubsubsection{\texorpdfstring{InvalidateDatabaseKey()}{InvalidateDatabaseKey()}}
+{\footnotesize\ttfamily bool Java\+Card\+Plugin.\+Java\+Card.\+Invalidate\+Database\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Send APDU reset command. -\/ 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the database key was sucessfully invalidate
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_java_card_plugin_1_1_java_card_af3dcb9aac6418ec1f59cbf7bf20c3f2d}\label{class_java_card_plugin_1_1_java_card_af3dcb9aac6418ec1f59cbf7bf20c3f2d}} 
+\index{JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}!SelectApplet@{SelectApplet}}
+\index{SelectApplet@{SelectApplet}!JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}}
+\doxysubsubsection{\texorpdfstring{SelectApplet()}{SelectApplet()}}
+{\footnotesize\ttfamily bool Java\+Card\+Plugin.\+Java\+Card.\+Select\+Applet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Select the correct applet on Java Card 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the applet was selected 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_java_card_plugin_1_1_java_card_aae5cf1f064fa79f892c9cfbce053de17}\label{class_java_card_plugin_1_1_java_card_aae5cf1f064fa79f892c9cfbce053de17}} 
+\index{JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}!UnlockCard@{UnlockCard}}
+\index{UnlockCard@{UnlockCard}!JavaCardPlugin.JavaCard@{JavaCardPlugin.JavaCard}}
+\doxysubsubsection{\texorpdfstring{UnlockCard()}{UnlockCard()}}
+{\footnotesize\ttfamily bool Java\+Card\+Plugin.\+Java\+Card.\+Unlock\+Card (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function gets pin from the user and send it to Java Card. 
+
+\begin{DoxyReturn}{Returns}
+If the pin unlocks the card -\/ returns true 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Program Files (x86)/\+Kee\+Pass Password Safe 2/\+Plugins/\+Java\+Card\+Plugin/\+Java\+Card\+Plugin/\+Java\+Card\+Plugin/Java\+Card.\+cs\end{DoxyCompactItemize}

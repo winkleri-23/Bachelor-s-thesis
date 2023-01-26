@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Program Files (x86)\\KeePass Password Safe 2\\Plugins\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin.csproj": {}
+  },
+  "projects": {
+    "C:\\Program Files (x86)\\KeePass Password Safe 2\\Plugins\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Program Files (x86)\\KeePass Password Safe 2\\Plugins\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin.csproj",
+        "projectName": "JavaCardPlugin",
+        "projectPath": "C:\\Program Files (x86)\\KeePass Password Safe 2\\Plugins\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin.csproj",
+        "packagesPath": "C:\\Users\\Erich\\.nuget\\packages\\",
+        "outputPath": "C:\\Program Files (x86)\\KeePass Password Safe 2\\Plugins\\JavaCardPlugin\\JavaCardPlugin\\JavaCardPlugin\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Erich\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Ionic.Zip": {
+              "target": "Package",
+              "version": "[1.9.1.8, )"
+            },
+            "Lacuna.Pki.BrazilTrustServices": {
+              "target": "Package",
+              "version": "[1.2.1, )"
+            },
+            "PCSC": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "PCSC.Iso7816": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "SharpZipLib": {
+              "target": "Package",
+              "version": "[1.3.3, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

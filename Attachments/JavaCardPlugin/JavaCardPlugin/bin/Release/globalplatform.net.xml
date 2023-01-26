@@ -1,0 +1,545 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>globalplatform.net</name>
+    </assembly>
+    <members>
+        <member name="T:globalplatform.net.CommandAPDU">
+            <summary>
+            Represents a command APDU.
+            </summary>
+            ToDo: Support Extended APDU
+        </member>
+        <member name="F:globalplatform.net.CommandAPDU.OFFSET_CLA">
+            <summary>
+            CLA offset in APDU
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.CommandAPDU.OFFSET_INS">
+            <summary>
+            INS offset in APDU
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.CommandAPDU.OFFSET_P1">
+            <summary>
+            P1 offset in APDU
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.CommandAPDU.OFFSET_P2">
+            <summary>
+            P2 offset in APDU
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.CommandAPDU.OFFSET_LC">
+            <summary>
+            LC offset in APDU
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.CommandAPDU.OFFSET_CDATA">
+            <summary>
+            DATA offset in APDU
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.CommandAPDU.CLA">
+            <summary>
+            CLA
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.CommandAPDU.INS">
+            <summary>
+            INS
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.CommandAPDU.P1">
+            <summary>
+            P1
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.CommandAPDU.P2">
+            <summary>
+            P2
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.CommandAPDU.LC">
+            <summary>
+            LC
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.CommandAPDU.LE">
+            <summary>
+            LE
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.CommandAPDU.Data">
+            <summary>
+            APDU data
+            </summary>
+        </member>
+        <member name="M:globalplatform.net.CommandAPDU.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>
+            Constructs CommandAPDU from cla, ins, p1, p2, data and le. LC is 
+            taken from data.Length
+            </summary>
+            <param name="cla">CLA</param>
+            <param name="ins">INS</param>
+            <param name="p1">P1</param>
+            <param name="p2">P2</param>
+            <param name="le">LE; -1 means no LE</param>
+            <param name="data">Data</param>
+        </member>
+        <member name="M:globalplatform.net.CommandAPDU.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            Constructs CommandAPDU from cla, ins, p1, p2 and data. It sets -1 for
+            LE that means no LE.
+            </summary>
+            <param name="cla">CLA</param>
+            <param name="ins">INS</param>
+            <param name="p1">P1</param>
+            <param name="p2">P2</param>
+            <param name="data">Data</param>
+        </member>
+        <member name="M:globalplatform.net.CommandAPDU.#ctor(System.Byte[])">
+            <summary>
+            Constructs CommandAPDU from raw APDU.
+            </summary>
+            <param name="apdu">Raw APDU</param>
+            <exception cref="T:System.Exception">
+            * If apdu.Length is less than 5
+            * If LC is not equal to (apdu.Length - 5) or (apdu.Length - 5 - 1)
+            </exception>
+        </member>
+        <member name="M:globalplatform.net.CommandAPDU.ToByteArray">
+            <summary>
+            Converts CommandAPDU to corresponding byte array.
+            </summary>
+            <returns>Byte array corresponding to this CommandAPDU</returns>
+        </member>
+        <member name="F:globalplatform.net.CryptoUtil.MODE_ENCRYPT">
+            <summary>
+            Operate at encryption mode
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.CryptoUtil.MODE_DECRYPT">
+            <summary>
+            Operate at decryption mode
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.CryptoUtil.BINARY_ZEROS_8_BYTE_BLOCK">
+            <summary>
+            Binary zeroes
+            </summary>
+        </member>
+        <member name="M:globalplatform.net.CryptoUtil.FullTripleDESMAC(globalplatform.net.Key,System.Byte[],System.Byte[])">
+            <summary>
+            Applies full triple DES MAC as defined in [ISO 9797-1] as MAC Algorithm 1 with output transformation 1, 
+            without truncation, and withtriple DES taking the place of the block cipher. 
+            See Global Platform 2.1.1 Card Spec Section B.1.2.1
+            </summary>
+            <param name="key">3DES key</param>
+            <param name="iv">Initial Vector</param>
+            <param name="data">Data to MAC</param>
+            <returns>Full triple DES MAC</returns>
+        </member>
+        <member name="M:globalplatform.net.CryptoUtil.SingleDESFullTripleDESMAC(globalplatform.net.Key,System.Byte[],System.Byte[])">
+            <summary>
+            Applies Retail MAC as defined in [ISO 9797-1] as MAC Algorithm 1 with output 
+            transformation 3, without truncation, and withDES taking the place of the block cipher. 
+            </summary>
+            <param name="key">Key</param>
+            <param name="iv">Initial Vector</param>
+            <param name="data">Data to MAC</param>
+            <returns>Retial MAC</returns>
+        </member>
+        <member name="M:globalplatform.net.CryptoUtil.DESPad(System.Byte[])">
+            <summary>
+            Applies DES Padding according to following rules:
+            * Append an '80' to the right of the data block. 
+            * If the resultant data block length is a multiple of 8, no further padding is required. 
+            * Append binary zeroes to the right of the data block until the data block length is a multiple of 8 
+            See Global Platform 2.1.1 Card Spec Section B.4
+            </summary>
+            <param name="data">Data to Pad</param>
+            <returns>DES Padded data</returns>
+        </member>
+        <member name="M:globalplatform.net.CryptoUtil.TripleDESECB(globalplatform.net.Key,System.Byte[],System.Int32)">
+            <summary>
+            Encrypts or decrypts <see cref="!:data"/> with 3DES/ECB/NoPadding
+            </summary>
+            <param name="key">Key</param>
+            <param name="iv">Initial Vector</param>
+            <param name="data">Data to encrypt or decrypt</param>
+            <param name="operationMode">Operation mode: either <see cref="F:globalplatform.net.CryptoUtil.MODE_ENCRYPT"/> or <see cref="F:globalplatform.net.CryptoUtil.MODE_DECRYPT"/> </param>
+            <returns></returns>
+        </member>
+        <member name="M:globalplatform.net.CryptoUtil.TripleDESCBC(globalplatform.net.Key,System.Byte[],System.Byte[],System.Int32)">
+            <summary>
+            Encrypts or decrypts <see cref="!:data"/> with 3DES/CBC/NoPadding
+            </summary>
+            <param name="key">Key</param>
+            <param name="iv">Initial Vector</param>
+            <param name="data">Data to encrypt or decrypt</param>
+            <param name="mode">Operation mode: either <see cref="F:globalplatform.net.CryptoUtil.MODE_ENCRYPT"/> or <see cref="F:globalplatform.net.CryptoUtil.MODE_DECRYPT"/> </param>
+            <returns></returns>
+        </member>
+        <member name="M:globalplatform.net.CryptoUtil.DESECB(globalplatform.net.Key,System.Byte[],System.Int32)">
+            <summary>
+            Encrypts or decrypts <see cref="!:data"/> with DES/ECB/NoPadding
+            </summary>
+            <param name="key">Key</param>
+            <param name="iv">Initial Vector</param>
+            <param name="data">Data to encrypt or decrypt</param>
+            <param name="operationMode">Operation mode: either <see cref="F:globalplatform.net.CryptoUtil.MODE_ENCRYPT"/> or <see cref="F:globalplatform.net.CryptoUtil.MODE_DECRYPT"/> </param>
+            <returns></returns>
+        </member>
+        <member name="M:globalplatform.net.CryptoUtil.DESCBC(globalplatform.net.Key,System.Byte[],System.Byte[],System.Int32)">
+            <summary>
+            Encrypts or decrypts <see cref="!:data"/> with DES/CBC/NoPadding
+            </summary>
+            <param name="key">Key</param>
+            <param name="iv">Initial Vector</param>
+            <param name="data">Data to encrypt or decrypt</param>
+            <param name="mode">Operation mode: either <see cref="F:globalplatform.net.CryptoUtil.MODE_ENCRYPT"/> or <see cref="F:globalplatform.net.CryptoUtil.MODE_DECRYPT"/> </param>
+            <returns></returns>
+        </member>
+        <member name="M:globalplatform.net.CryptoUtil.SubArray(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Extracts a subarray from <see cref="!:source"/> array.
+            </summary>
+            <param name="source">Source array</param>
+            <param name="index">Index</param>
+            <param name="length">Length</param>
+            <returns>Subarray from index (inclusive) up to <see cref="!:length"/> bytes.</returns>
+        </member>
+        <member name="T:globalplatform.net.GlobalPlatform">
+            <summary>
+            An implementation of Global Platform services. It is designed to be used for indirect 
+            and asyncronous management of Global Platform compliant cards.
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.CLA_GP">
+            <summary>
+            Global Platform CLA
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.CLA_SECURE_GP">
+            <summary>
+            Global Platform secure messaging CLA
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.SCP_ANY">
+            <summary>
+            Card default secure channel protocol
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.SCP_01">
+            <summary>
+            SCP '01' Secure channel protocol identifier
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.SCP_02">
+            <summary>
+            SCP '01' Secure channel protocol identifier
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_ANY">
+            <summary>
+            Card default secure channel implementation option
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_I_04">
+            <summary>
+            Implementation option "i" = '04': Initiation mode explicit, C-MAC on modified APDU, ICV set to zero, no ICV encryption, 1 
+            Secure Channel base key.
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_I_05">
+            <summary>
+            Implementation option "i" = '05': Initiation mode explicit, C-MAC on modified APDU, ICV set to zero, no ICV encryption, 3 
+            Secure Channel Keys.
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_I_0A">
+            <summary>
+            Implementation option "i" = '0A': Initiation mode implicit, C-MAC on unmodified APDU, ICV set to MAC over AID, no ICV 
+            encryption, 1 Secure Channel base key.
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_I_0B">
+            <summary>
+            Implementation option "i" = '0B': Initiation mode implicit, C-MAC on unmodified APDU, ICV set to MAC over AID, no ICV 
+            encryption, 3 Secure Channel Keys.
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_I_14">
+            <summary>
+            Implementation option "i" = '14': Initiation mode explicit, C-MAC on modified APDU, ICV set to zero, ICV encryption for 
+            C-MAC session, 1 Secure Channel base key.
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_I_15">
+            <summary>
+            Implementation option "i" = '15': Initiation mode explicit, C-MAC on modified APDU, ICV set to zero, ICV encryption for C-MAC session, 3 
+            Secure Channel Keys.
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_I_1A">
+            <summary>
+            "i" = '1A': Initiation mode implicit, C-MAC on unmodified APDU, ICV set to MAC over AID, ICV 
+            encryption for C-MAC session, 1 Secure Channel base key.
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_I_1B">
+            <summary>
+            "i" = '1B': Initiation mode implicit, C-MAC on unmodified APDU, ICV set to MAC over AID, ICV 
+            encryption for C-MAC session,3 Secure Channel Keys. 
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.INS_INIT_UPDATE">
+            <summary>
+            INITIALIZE UPDATE Command
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.INS_EXT_AUTH">
+            <summary>
+            EXTERNAL AUTHENTICATE Command
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.INS_PUT_KEY">
+            <summary>
+            PUT KEY Command
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.KEY_FORMAT_1">
+            <summary>
+            Format 1 for PUT Key command
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.GlobalPlatform.KEY_FORMAT_2">
+            <summary>
+            Format 2 for PUT Key command. It is reserved for future use.
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.GlobalPlatform.SecureChannel">
+            <summary>
+            Secure Channel
+            </summary>
+        </member>
+        <member name="M:globalplatform.net.GlobalPlatform.CreateInitUpdateCommand(globalplatform.net.KeySet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Generates INITIALIZE UPDATE command with specified static key set.
+            </summary>
+            <param name="staticKeySet">Secure channel static key set</param>
+            <param name="securityLevel">Security level. It must be a valid combination of 
+            security level bit pattern defined in <see cref="T:globalplatform.net.SecurityLevel"/>.</param>
+            <param name="scpIdentifier">Secure Channel Identifier according to Global Platform 2.1.1 Card Spec section 8.6.
+            Currently SCP '01' and SCP '02' is supported. Use <see cref="F:globalplatform.net.GlobalPlatform.SCP_ANY"/> if you are not sure.</param>
+            <param name="scpImplementationOption">Secure Channel Implementation Option according to
+            Global Platform 2.1.1 Card Spec section D.1.1 for SCP '01' or section E.1.1 for SCP '02'. Use <see cref="F:globalplatform.net.GlobalPlatform.IMPL_OPTION_ANY"/> 
+            along with <see cref="F:globalplatform.net.GlobalPlatform.SCP_ANY"/> for Secure Channel Identifier, if you are not sure.</param>
+            <returns>CommandAPDU for INITIALIZE UPDATE command for specified static key set</returns>
+        </member>
+        <member name="M:globalplatform.net.GlobalPlatform.ProcessInitUpdateResponse(globalplatform.net.ResponseAPDU)">
+            <summary>
+            
+            </summary>
+            <param name="response"></param>
+        </member>
+        <member name="M:globalplatform.net.GlobalPlatform.CreateExternalAuthCommand">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:globalplatform.net.GlobalPlatform.CreatePutKeyCommand(System.Collections.Generic.List{globalplatform.net.Key},System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="keys"></param>
+            <param name="replaceExisting"></param>
+            <param name="keyFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="P:globalplatform.net.Key.Value">
+            <summary>
+            Key value
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.Key.KeyVersion">
+            <summary>
+            Key version
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.Key.KeyId">
+            <summary>
+            Key Id
+            </summary>
+        </member>
+        <member name="M:globalplatform.net.Key.#ctor(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Constructs a key from byte array
+            </summary>
+            <param name="value">Key value</param>
+            <param name="keyId">Key Id</param>
+            <param name="keyVersion">Key Version</param>
+        </member>
+        <member name="M:globalplatform.net.Key.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Constructs a key from hex string represntation
+            </summary>
+            <param name="value">Key value</param>
+            <param name="keyId">Key Id</param>
+            <param name="keyVersion">Key Version</param>
+        </member>
+        <member name="M:globalplatform.net.Key.BuildTripleDesKey">
+            <summary>
+            Builds 3DES key from this key value
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:globalplatform.net.Key.BuildDesKey">
+            <summary>
+            Builds DES key from this key value
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:globalplatform.net.KeySet">
+            <summary>
+            A set of keys associated with a card or a secure channel
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.KeySet.KeyVersion">
+            <summary>
+            Key Version Number  within an on-card entity may be used to 
+            differentiate instances or versions of the same key.
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.KeySet.EncKey">
+            <summary>
+            ENC Key
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.KeySet.MacKey">
+            <summary>
+            C-MAC Key
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.KeySet.RmacKey">
+            <summary>
+            R-MAC Key
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.KeySet.KekKey">
+            <summary>
+            KEK Key
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.KeySet.KeyId">
+            <summary>
+            Key Identifier which identifies each key within an on-card entity.
+            </summary>
+        </member>
+        <member name="M:globalplatform.net.KeySet.RetrieveKey(System.Int32)">
+            <summary>
+            Retrives key of the specified type.
+            </summary>
+            <param name="keyType">Key type:
+            * <see cref="F:globalplatform.net.Key.KEY_TYPE_ENC"/>
+            * <see cref="F:globalplatform.net.Key.KEY_TYPE_MAC"/>
+            * <see cref="F:globalplatform.net.Key.KEY_TYPE_RMAC"/>
+            * <see cref="F:globalplatform.net.Key.KEY_TYPE_KEK"/>
+            </param>
+            <returns>Retrieved key</returns>
+        </member>
+        <member name="M:globalplatform.net.KeySet.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructs key set and sets key id and key version
+            </summary>
+            <param name="keyId">Key Id</param>
+            <param name="keyVersion">Key version</param>
+        </member>
+        <member name="T:globalplatform.net.ResponseAPDU">
+             <summary>
+             Represents repsonse APDU
+             </summary>
+            
+        </member>
+        <member name="P:globalplatform.net.ResponseAPDU.SW1">
+            <summary>
+            SW1
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.ResponseAPDU.SW2">
+            <summary>
+            SW2
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.ResponseAPDU.Data">
+            <summary>
+            Response data
+            </summary>
+        </member>
+        <member name="M:globalplatform.net.ResponseAPDU.#ctor(System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            Constructs a ResponseAPDU from sw1, sw2 and response data.
+            </summary>
+            <param name="sw1">sw1</param>
+            <param name="sw2">sw2</param>
+            <param name="data">response data</param>
+        </member>
+        <member name="M:globalplatform.net.ResponseAPDU.#ctor(System.Byte[])">
+            <summary>
+            Constructs a ResponseAPDU from raw response.
+            </summary>
+            <param name="response">Raw respose</param>
+            <exception cref="T:System.Exception">If raw response contains less than 2 bytes.</exception>
+        </member>
+        <member name="M:globalplatform.net.ResponseAPDU.ToByteArray">
+            <summary>
+            Converts ResponseAPDU to a byte array.
+            </summary>
+            <returns>Byte array corresponding to ResponseAPDU</returns>
+        </member>
+        <member name="P:globalplatform.net.SecureChannel.SecurityLevel">
+            <summary>
+            Security level of establisged secure channel 
+            </summary>
+        </member>
+        <member name="P:globalplatform.net.SecureChannel.SessionKeys">
+            <summary>
+            Secure channel session key set
+            </summary>
+        </member>
+        <member name="M:globalplatform.net.SecureChannel.#ctor(globalplatform.net.KeySet,System.Int32,System.Int32,System.Int32,System.Byte[],System.Byte[])">
+            <summary>
+            Constructs a secure channel
+            </summary>
+            <param name="sessionKeys">Session Keys</param>
+            <param name="securityLevel">Security Level</param>
+            <param name="scpIdentifier">Secure Channel Identifer: either <see cref="F:globalplatform.net.GlobalPlatform.SCP_01"/> or 
+            <see cref="F:globalplatform.net.GlobalPlatform.SCP_02"/>.</param>
+            <param name="scpImplementationOption">Secure Channel Implementation Option: See GlobalPlatform.IMPL_OPTION_* </param>
+            <param name="icv">Initial Chaining Vector</param>
+            <param name="ricv">Response Initial Chaingin Vector</param>
+        </member>
+        <member name="F:globalplatform.net.SecurityLevel.NO_SECURITY_LEVEL">
+            <summary>
+            NO SECURITY LEVEL
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.SecurityLevel.C_MAC">
+            <summary>
+            C-MAC
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.SecurityLevel.C_DECRYPTION">
+            <summary>
+            C-DECRYPTION
+            </summary>
+        </member>
+        <member name="F:globalplatform.net.SecurityLevel.R_MAC">
+            <summary>
+            R-MAC
+            </summary>
+        </member>
+    </members>
+</doc>

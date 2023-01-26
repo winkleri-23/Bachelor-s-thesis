@@ -1,0 +1,17 @@
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\bin\Debug\netcoreapp3.1\ProtectKey.exe
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\bin\Debug\netcoreapp3.1\ProtectKey.deps.json
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\bin\Debug\netcoreapp3.1\ProtectKey.runtimeconfig.json
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\bin\Debug\netcoreapp3.1\ProtectKey.runtimeconfig.dev.json
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\bin\Debug\netcoreapp3.1\ProtectKey.dll
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\bin\Debug\netcoreapp3.1\ProtectKey.pdb
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.csproj.AssemblyReference.cache
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.AssemblyInfoInputs.cache
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.AssemblyInfo.cs
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.csproj.CoreCompileInputs.cache
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.dll
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.pdb
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.genruntimeconfig.cache
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Erich\Desktop\BP\ProtectKey\ProtectKey\ProtectKey\obj\Debug\netcoreapp3.1\ProtectKey.csproj.CopyComplete
